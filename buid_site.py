@@ -1,11 +1,11 @@
 
 # Perhaps jinja2 is a more lightweigth solution
-from jinja2 import Template
+from jinja2 import Template, Environment, FileSystemLoader
 import nbformat
 from nbconvert import HTMLExporter
 import json
 from os import makedirs
-from os.path import exists
+from os.path import exists, splitext
 from jbook import jupyterChapter
 from pprint import pprint
 
@@ -28,15 +28,25 @@ for file in book_meta['chapters']['file_names']:
     chapter.getTitle()
     chapters.append(chapter)
 
-titles = []
-for chapter in chapters:
-    titles.append(chapter.title)
+chapter_list = []
+for id, chapter in enumerate(chapters):
+    nav_elements = dict()
+    nav_elements['name'] = chapter.title
+    href = splitext(book_meta['chapters']['file_names'][id])[0] + '.html'
+    nav_elements['href'] = href
+    nav_elements['class'] = 'none'
+    chapter_list.append(nav_elements)
 
 for chapter in chapters:
-    chapter.addChapterList(titles)
+    chapter.addChapterList(chapter_list)
+    env = Environment(loader = FileSystemLoader('templates'))
+    template = env.get_template('default.html')
+    html_out = template.render(chapters = chapter.chapter_list, notebook_content = chapter.notebook[0])
+    with open(splitext(chapter.filename)[0] + '.html', 'wb') as dst:
+        dst.write(html_out)
 
 
-    
+
 
     # Open and read it
     # Generate html string
