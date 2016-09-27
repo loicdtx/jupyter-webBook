@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python_interpreter": "/home/user/.virtualenvs/pybook/bin/python"
+	}
+}
