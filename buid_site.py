@@ -32,7 +32,7 @@ chapter_list = []
 for id, chapter in enumerate(chapters):
     nav_elements = dict()
     nav_elements['name'] = chapter.title
-    href = splitext(book_meta['chapters']['file_names'][id])[0] + '.html'
+    href = splitext(chapter.filename)[0] + '.html'
     nav_elements['href'] = href
     nav_elements['class'] = 'none'
     chapter_list.append(nav_elements)
