@@ -27,7 +27,7 @@ copy_and_overwrite('static/css', "_site/css")
 # Build jupyterChapter class for each file
 # TODO: function buildClassList()
 for file in book_meta['chapters']['file_names']:
-    chapter = jupyterChapter(file)
+    chapter = jupyterChapter(file, book_meta['title'])
     chapter.readNotebook()
     chapter.getTitle()
     chapter.makeFilenameOut()
@@ -46,8 +46,11 @@ for chapter in chapters:
 for chapter in chapters:
     chapter.addChapterList(nav_chapters)
     chapter.activateNavClass()
+    chapter.numberChapters()
     env = Environment(loader = FileSystemLoader('templates'))
     template = env.get_template('default.html')
-    html_out = template.render(chapters = chapter.chapter_list, notebook_content = chapter.notebook)
+    html_out = template.render(chapters = chapter.chapter_list,\
+                               notebook_content = chapter.notebook,\
+                               webbook_title = chapter.webbook_title)
     with open(chapter.filename_out, 'w') as dst:
         dst.write(html_out)

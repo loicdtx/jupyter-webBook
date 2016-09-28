@@ -26,8 +26,8 @@
     <div class="row">
       <div class="col-sm-2">
         <ul id="sidebar" class="nav nav-stacked nav-pills affix col-sm-2">
-          <li role="presentation"><a href="#"><strong>{{ title }}</strong></a></li>
-          <hr>
+          <li role="presentation"><a href="#"><strong>{{ webbook_title }}</strong></a></li>
+          <hr style="margin-top: 0px">
           {% for chapter in chapters %}
           <li role="presentation" class="{{ chapter.class }}"><a href="{{ chapter.href }}">{{ chapter.name }}</a></li>
           {% endfor %}

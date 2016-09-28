@@ -11,8 +11,9 @@ sys.setrecursionlimit(10000)
 
 class jupyterChapter(object):
     """docstring for jupyterChapter"""
-    def __init__(self, filename):
+    def __init__(self, filename, webbook_title = 'Jupyter WebBook'):
         self.filename = filename
+        self.webbook_title = webbook_title
         self.title = "Missing chapter title"
         self.notebook = None
 
@@ -40,7 +41,8 @@ class jupyterChapter(object):
                 item['class'] = 'active'
 
     def numberChapters(self):
-        pass
+        for i, item in enumerate(self.chapter_list):
+            item['name'] = str(i + 1) + '. ' + item['name']
         
 
         
