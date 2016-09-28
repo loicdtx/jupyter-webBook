@@ -2,7 +2,12 @@ import nbformat
 from nbconvert import HTMLExporter
 from bs4 import BeautifulSoup
 import os
+from os.path import splitext
 import shutil
+import copy
+import sys
+
+sys.setrecursionlimit(10000)
 
 class jupyterChapter(object):
     """docstring for jupyterChapter"""
@@ -22,8 +27,23 @@ class jupyterChapter(object):
     def getTitle(self):
         soup = BeautifulSoup(self.notebook, 'html.parser')
         self.title = soup.h1.contents[0]
+
     def addChapterList(self, chapter_list):
-        self.chapter_list = chapter_list
+        self.chapter_list = copy.deepcopy(chapter_list)
+
+    def makeFilenameOut(self, prefix = '_site/'):
+        self.filename_out = prefix + splitext(self.filename)[0] + '.html'
+
+    def activateNavClass(self):
+        for item in self.chapter_list:
+            if item['name'] == self.title:
+                item['class'] = 'active'
+
+    def numberChapters(self):
+        pass
+        
+
+        
 
 
 
@@ -33,6 +53,3 @@ def copy_and_overwrite(from_path, to_path):
     if os.path.exists(to_path):
         shutil.rmtree(to_path)
     shutil.copytree(from_path, to_path)
-
-
-# TODO: Method or function to change the html class of the nav element corresponding to the current chapter

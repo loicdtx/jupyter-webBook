@@ -3,9 +3,10 @@ import nbformat
 from nbconvert import HTMLExporter
 import json
 from os import makedirs
-from os.path import exists, splitext
+from os.path import exists, basename
 from jbook import jupyterChapter, copy_and_overwrite
 from shutil import copytree
+from copy import copy
 from pprint import pprint
 
 # Variables
@@ -29,38 +30,24 @@ for file in book_meta['chapters']['file_names']:
     chapter = jupyterChapter(file)
     chapter.readNotebook()
     chapter.getTitle()
+    chapter.makeFilenameOut()
     chapters.append(chapter)
 
-# Iterate throught the 
-# TODO: function buildNavbarList
+# Build a list containing all chapters information to build the navbar
+# TODO: function buildNavbarList()
 for chapter in chapters:
     nav_elements = dict()
     nav_elements['name'] = chapter.title
-    href = splitext(chapter.filename)[0] + '.html'
-    nav_elements['href'] = href
+    nav_elements['href'] = basename(chapter.filename_out)
     nav_elements['class'] = 'none'
     nav_chapters.append(nav_elements)
 
+# Add navbar elements to each chapter, feed html template and write to file
 for chapter in chapters:
     chapter.addChapterList(nav_chapters)
+    chapter.activateNavClass()
     env = Environment(loader = FileSystemLoader('templates'))
     template = env.get_template('default.html')
     html_out = template.render(chapters = chapter.chapter_list, notebook_content = chapter.notebook)
-    with open("_site/" + splitext(chapter.filename)[0] + '.html', 'wb') as dst:
+    with open(chapter.filename_out, 'w') as dst:
         dst.write(html_out)
-
-
-
-
-    # Open and read it
-    # Generate html string
-    # Retrieve h1 and h2s (store the list of h1 and h2s for later)
-# jake_notebook = nbformat.reads(response, as_version=4)
-# jake_notebook.cells[0]
-    # Generate file and add html string to it
-
-
-# For each html file generated
-    # Read the file
-    # Fill the navbar
-
