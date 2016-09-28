@@ -1,48 +1,52 @@
-
-# Perhaps jinja2 is a more lightweigth solution
 from jinja2 import Template, Environment, FileSystemLoader
 import nbformat
 from nbconvert import HTMLExporter
 import json
 from os import makedirs
 from os.path import exists, splitext
-from jbook import jupyterChapter
+from jbook import jupyterChapter, copy_and_overwrite
+from shutil import copytree
 from pprint import pprint
 
 # Variables
 dir_out = "_site"
+chapters = []
+nav_chapters = []
 
 # Get the list of files (and title of the book) from the file "_book.json"
 with open("_book.json") as src:
     book_meta = json.load(src)
 
-# Create _site directory
+# Create _site directory and add css to it
 if not exists(dir_out):
     makedirs(dir_out)
 
-chapters = []
-# For each file:
+copy_and_overwrite('static/css', "_site/css")
+
+# Build jupyterChapter class for each file
+# TODO: function buildClassList()
 for file in book_meta['chapters']['file_names']:
     chapter = jupyterChapter(file)
     chapter.readNotebook()
     chapter.getTitle()
     chapters.append(chapter)
 
-chapter_list = []
-for id, chapter in enumerate(chapters):
+# Iterate throught the 
+# TODO: function buildNavbarList
+for chapter in chapters:
     nav_elements = dict()
     nav_elements['name'] = chapter.title
     href = splitext(chapter.filename)[0] + '.html'
     nav_elements['href'] = href
     nav_elements['class'] = 'none'
-    chapter_list.append(nav_elements)
+    nav_chapters.append(nav_elements)
 
 for chapter in chapters:
-    chapter.addChapterList(chapter_list)
+    chapter.addChapterList(nav_chapters)
     env = Environment(loader = FileSystemLoader('templates'))
     template = env.get_template('default.html')
-    html_out = template.render(chapters = chapter.chapter_list, notebook_content = chapter.notebook[0])
-    with open(splitext(chapter.filename)[0] + '.html', 'wb') as dst:
+    html_out = template.render(chapters = chapter.chapter_list, notebook_content = chapter.notebook)
+    with open("_site/" + splitext(chapter.filename)[0] + '.html', 'wb') as dst:
         dst.write(html_out)
 
 
