@@ -1,8 +1,8 @@
 {
-"title": "Jupyter WebBook", 
-"chapters": {
-	"file_names": [
-		"modisPreProcess.ipynb",
-		"rasterio_tutorial.ipynb"
-	]
-}}
+"title": "Jupyter WebBook",
+"files": [
+    "intro.ipynb",
+    "examples.ipynb",
+    "install.ipynb",
+    "use.ipynb"],
+"assets": "img"}

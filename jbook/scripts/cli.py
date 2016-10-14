@@ -43,7 +43,7 @@ def nb2book():
     title = book_meta['title']
 
     # Build jupyterChapter class for each file and make a list of it
-    chapters = [buildChapterList(x, title, dir_out) for x in book_meta['chapters']['file_names']]
+    chapters = [buildChapterList(x, title, dir_out) for x in book_meta['files']]
 
     # Build a list of navbar elements
     navbar_list = map(makeNavBarList, chapters)
