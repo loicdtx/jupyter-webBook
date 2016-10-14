@@ -32,8 +32,8 @@ class jupyterChapter(object):
     def addChapterList(self, chapter_list):
         self.chapter_list = copy.deepcopy(chapter_list)
 
-    def makeFilenameOut(self, prefix = '_site/'):
-        self.filename_out = prefix + splitext(self.filename)[0] + '.html'
+    def makeFilenameOut(self, prefix):
+        self.filename_out = prefix + '/' + splitext(self.filename)[0] + '.html'
 
     def activateNavClass(self):
         for item in self.chapter_list:
