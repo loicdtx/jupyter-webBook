@@ -2,7 +2,7 @@ import nbformat
 from nbconvert import HTMLExporter
 from bs4 import BeautifulSoup
 import os
-from os.path import splitext
+from os.path import splitext, join
 import shutil
 import copy
 import sys
@@ -33,7 +33,7 @@ class jupyterChapter(object):
         self.chapter_list = copy.deepcopy(chapter_list)
 
     def makeFilenameOut(self, prefix):
-        self.filename_out = prefix + '/' + splitext(self.filename)[0] + '.html'
+        self.filename_out = join(prefix, splitext(self.filename)[0] + '.html')
 
     def activateNavClass(self):
         for item in self.chapter_list:
