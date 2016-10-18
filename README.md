@@ -1,3 +1,10 @@
+# Jupyter webBook
+
+A webBook authoring framework inspired by [R bookdown](https://github.com/rstudio/bookdown).
+
+See demo [here](www.loicdutrieux.net/jupyter-webbook/intro.html)
+
+
 ## Install
 
 `Jupyter-webBook` despends on a version of `nbconverts` that is not yet on PyPi. You therefore need to first install the development version of `nbconvert` directly from github.
