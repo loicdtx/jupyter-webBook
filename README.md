@@ -10,6 +10,8 @@ See demo [here](http://www.loicdutrieux.net/jupyter-webBook/intro.html)
 - Define book structure in the `_book.json` file
 - Run `nb2book` command to compile the webBook
 
+![](img/Screenshot.png)
+
 ## Install
 
 `Jupyter-webBook` depends on a version of `nbconverts` that is not yet on PyPi. You therefore need to first install the development version of `nbconvert` directly from github.
