@@ -36,7 +36,9 @@ def nb2book():
         makedirs(dir_out)
 
     css_dir = join(dirname(sys.modules['jbook'].__file__), 'static/css')
+    js_dir = join(dirname(sys.modules['jbook'].__file__), 'static/js')
     copy_and_overwrite(css_dir, join(dir_out, "css"))
+    copy_and_overwrite(js_dir, join(dir_out, "js"))
     copy_and_overwrite(book_meta['assets'], join(dir_out, book_meta['assets']))
 
     #TODO: repeat for assets
