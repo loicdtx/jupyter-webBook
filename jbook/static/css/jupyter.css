@@ -19,6 +19,7 @@ body {
 #main p, #main li {
   font-size: 16px;
   color: DimGrey;
+  line-height: 1.8
 }
 
 code {
