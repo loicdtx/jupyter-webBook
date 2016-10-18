@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Jupyter WebBook</title>
+
+  <!-- Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/jupyter.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+
+    <body>
+
+
+
+
+      <!-- ################## -->
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><!-- Place for some text or icons --></a>
+        </div>
+      </div><!--/.navbar -->
+
+      <div class="row-offcanvas row-offcanvas-left">
+        <div id="sidebar" class="sidebar-offcanvas">
+          <div class="col-md-12">
+            <h3>Jupyter WebBook</h3>
+            <ul class="nav nav-pills nav-stacked">
+              
+              <li class="none"><a href="intro.html">1. Introduction</a></li>
+              
+              <li class="none"><a href="examples.html">2. Example jupyter notebook applications</a></li>
+              
+              <li class="none"><a href="install.html">3. Installation</a></li>
+              
+              <li class="active"><a href="use.html">4. Usage</a></li>
+              
+            </ul>
+          </div>
+        </div>
+        <div id="main">
+          <div class="col-md-10 col-md-offset-1">
+            
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Usage">Usage<a class="anchor-link" href="#Usage">&#182;</a></h1><h2 id="Produce-book-content">Produce book content<a class="anchor-link" href="#Produce-book-content">&#182;</a></h2><p>One Jupyter Notebook per chapter, just like you always do.</p>
+<h2 id="Formatting-conventions">Formatting conventions<a class="anchor-link" href="#Formatting-conventions">&#182;</a></h2><p>Every chapter must start with a markdown Title 1 (<code># title of the chapter</code>) element. This title is used for the table of contents.</p>
+<h2 id="The-_book.json-file">The <code>_book.json</code> file<a class="anchor-link" href="#The-_book.json-file">&#182;</a></h2><p>You must add a <code>_book.json</code> file in the directory that contains your notebooks. This file provides the chapters to include in the book and their order.</p>
+<p>The file must have a structure as follows:</p>
+<p><code>{
+"title": "Title of the notebook", 
+"files": [
+        "firstChapter.ipynb",
+        "secondChapter.ipynb",
+        "thirdChapter.ipynb"
+    ],
+"assets": "img"}</code></p>
+<h2 id="Compile-the-site">Compile the site<a class="anchor-link" href="#Compile-the-site">&#182;</a></h2><p><code>cd</code> to the directory containing your notebooks and the <code>_book.json</code> file, and run.</p>
+<p><code>nb2book</code></p>
+<p>Your site will be compiled in the <code>_site</code> subdirectory.</p>
+<h2 id="Deploy-on-gh-pages">Deploy on gh-pages<a class="anchor-link" href="#Deploy-on-gh-pages">&#182;</a></h2><p>I'm still working on making that flowless. <a href="https://github.com/X1011/git-directory-deploy">This bash scrip</a> sounds like a good option.</p>
+
+</div>
+</div>
+</div>
+          </div>
+        </div>
+      </div><!--/row-offcanvas -->
+
+
+      <!-- ################ -->
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script type="text/javascript">
+        $('.prompt').remove();
+        $('.anchor-link').remove();
+      </script>
+    </body>
+    </html>
