@@ -2,7 +2,7 @@
 
 A webBook authoring framework inspired by [R bookdown](https://github.com/rstudio/bookdown).
 
-See demo [here](www.loicdutrieux.net/jupyter-webBook/intro.html)
+See demo [here](http://www.loicdutrieux.net/jupyter-webBook/intro.html)
 
 
 ## Install
