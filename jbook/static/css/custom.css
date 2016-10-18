@@ -8,8 +8,8 @@ body {
 
 #sidebar {
   width: inherit;
-  min-width: 220px;
-  max-width: 220px;
+  min-width: 300px;
+  max-width: 300px;
   background-color:#f5f5f5;
   float: left;
   height:100%;
@@ -32,12 +32,12 @@ body {
     -webkit-transition: all 0.25s ease-out;
     -moz-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
-    width:calc(100% + 220px);
+    width:calc(100% + 300px);
   }
     
   .row-offcanvas-left
   {
-    left: -220px;
+    left: -300px;
   }
 
   .row-offcanvas-left.active {

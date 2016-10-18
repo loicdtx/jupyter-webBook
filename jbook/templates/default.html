@@ -34,14 +34,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{{ webbook_title }}</a>
+          <a class="navbar-brand" href="#"><!-- Place for some text or icons --></a>
         </div>
       </div><!--/.navbar -->
 
       <div class="row-offcanvas row-offcanvas-left">
         <div id="sidebar" class="sidebar-offcanvas">
           <div class="col-md-12">
-            <h3>Chapters</h3>
+            <h3>{{ webbook_title }}</h3>
             <ul class="nav nav-pills nav-stacked">
               {% for chapter in chapters %}
               <li class="{{ chapter.class }}"><a href="{{ chapter.href }}">{{ chapter.name }}</a></li>
@@ -64,6 +64,7 @@
       <script src="js/custom.js"></script>
       <script type="text/javascript">
         $('.prompt').remove();
+        $('.anchor-link').remove();
       </script>
     </body>
     </html>
