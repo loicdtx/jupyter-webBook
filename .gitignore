@@ -1,3 +1,6 @@
 *.pyc
 venv
 
+.ipynb_checkpoints
+_site
+jbook.egg-info
