@@ -1,0 +1,2 @@
+include jbook/templates/ *
+recursive-include jbook/static/ *

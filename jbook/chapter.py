@@ -19,7 +19,10 @@ class jupyterChapter(object):
 
     def readNotebook(self):
         with open(self.filename) as src:
-            chapter_raw = src.read().decode()
+            if sys.version_info[1] == 2:
+                chapter_raw = src.read().decode()
+            else:
+                chapter_raw = src.read()
         chapter_nb = nbformat.reads(chapter_raw, as_version=4)
         html_exporter = HTMLExporter()
         html_exporter.template_file = 'basic'
